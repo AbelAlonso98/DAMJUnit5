@@ -8,6 +8,7 @@ import java.util.TreeSet;
 
 public class Ejercicio5 {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		String[] tokens = s.nextLine().split("\\p{javaWhitespace}+");
@@ -30,7 +31,7 @@ public class Ejercicio5 {
 				
 			System.out.println(ordenado);
 		}
-		
+		s.close();
 	}
 }
 /*

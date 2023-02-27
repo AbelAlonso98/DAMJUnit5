@@ -1,7 +1,6 @@
 package segundaevaluacion.streams;
 
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Stream;
 
 public class MiClase {
