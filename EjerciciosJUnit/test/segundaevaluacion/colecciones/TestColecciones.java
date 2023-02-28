@@ -1,10 +1,17 @@
 package segundaevaluacion.colecciones;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
 
@@ -94,6 +101,37 @@ class TestColecciones {
 		
 		// Le pasamos null como paramentro
 		assertThrows(NullPointerException.class, () -> Colecciones.valoresUnicos(null));
+	}
+	
+	@Test
+	void testAlgunaSeRepiteAlMenos3Veces() {
+		// Funcionamiento correcto con lista que cumple los requisitos
+		List<String> cadenas2 = Stream.of("a", "b", "a", "c" ,"a").collect(Collectors.toList());
+		List<String> cadenas = List.of("a", "b", "a", "c" ,"a");
+		assertTrue(Colecciones.algunaSeRepiteAlMenos3Veces(cadenas));
+		assertTrue(Colecciones.algunaSeRepiteAlMenos3Veces(cadenas2));
+		
+		// Funcionamiento correcto con lista que no cumple los requisitos
+		cadenas = List.of("a", "b", "a", "c" );
+		cadenas2.remove("a");
+		assertFalse(Colecciones.algunaSeRepiteAlMenos3Veces(cadenas));
+		assertFalse(Colecciones.algunaSeRepiteAlMenos3Veces(cadenas2));
+		
+		// Lista vacia
+		cadenas = List.of();
+		assertFalse(Colecciones.algunaSeRepiteAlMenos3Veces(cadenas));
+		
+		// Le pasamos null como parametro
+		assertThrows(NullPointerException.class, () -> Colecciones.algunaSeRepiteAlMenos3Veces(null));
+	}
+	
+	@Test
+	void testNegativosAbajoPositivosArriba() {
+		Deque<Integer> pila = new ArrayDeque<>(List.of(3, 1, -5, 4, -2, 7));
+		System.out.println(pila);
+		Colecciones.negativosAbajoPositivosArriba(pila);
+		System.out.println(pila);
+		pila.clear();
 	}
 	
 

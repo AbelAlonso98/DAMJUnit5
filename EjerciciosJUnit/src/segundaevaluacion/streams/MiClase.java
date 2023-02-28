@@ -32,7 +32,7 @@ public class MiClase {
 		System.out.println("\n---------------------------------6---------------------------------");
 		Stream.iterate(0, i -> ++i).limit(20).forEach(s -> System.out.println(s));
 		
-//		Mostrar por pantalla los 20 primeros imparesm  bjb 
+//		Mostrar por pantalla los 20 primeros impares
 		System.out.println("\n---------------------------------7---------------------------------");
 		Stream.iterate(0, i -> ++i).filter(s -> s%2==1).limit(20).forEach(s -> System.out.println(s));
 //		Stream.generate(() -> new Random().nextInt(10)).limit(10).forEach(s -> System.out.println(s));

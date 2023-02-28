@@ -1,5 +1,6 @@
 package primeraevaluacion.colecciones2;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.HashMap;
@@ -8,6 +9,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Set;
 
@@ -60,13 +62,17 @@ public class Colecciones {
 //		System.out.println(valoresUnicos(mapa));
 //		System.out.println(valoresUnicos2(mapa));
 		
-		List<String> lista = new ArrayList<>();
-		lista.add("hola");
-		lista.add("hola");
-		lista.add("que");
-		lista.add("estas");
-		System.out.println(algunaSeRepiteAlMenos3Veces(lista));
+//		List<String> lista = new ArrayList<>();
+//		lista.add("hola");
+//		lista.add("hola");
+//		lista.add("que");
+//		lista.add("estas");
+//		System.out.println(algunaSeRepiteAlMenos3Veces(lista));
 
+		Deque<Integer> pila = new ArrayDeque<>(List.of(3, 1, -5, 4, -2, 7));
+		System.out.println(pila);
+		negativosAbajoPositivosArriba(pila);
+		System.out.println(pila);
 	}
 
 	public static void eliminarLasDeLongitudPar(Set<String> cadenas) {
@@ -125,47 +131,27 @@ public class Colecciones {
 		}
 		return false;
 	}
-//	public static boolean algunaSeRepiteAlMenos3Veces2(List<String> cadenas) {
-//		Map<Integer, String> mapa = new HashMap<>();
-//		for(int i = 0; i < cadenas.size(); i++)
-//			mapa.put(i, cadenas.get(i));
-//		for(String s: mapa.values())
-//			
-//		mapa.values().stream().
-//		return false;
-//	}
 
-	public static void negativosAbajoPositivosArriba(Deque<Integer> pila) {
-//		Queue<Integer> cola = new PriorityQueue<>();
-//		Deque<Integer> pilaAux = new ArrayDeque<>();
-//		pilaAux.add(pila.pop());
-//		for (Integer i : pila) {
-//			if (pilaAux.peek() > pila.peek()) {
-//				cola.addAll(pilaAux);
-//				for(Integer j : pila)
-//					pila.remove();
-//				pilaAux.add(pila.peek());
-//				for(Integer k : pilaAux)
-//			}
-//		}
 
-	}
+	public static  void negativosAbajoPositivosArriba(Deque<Integer> pila) {
+		Queue<Integer> cola = new LinkedList<>();
+		while (!pila.isEmpty())
+			cola.offer(pila.pop());
 
-	public static void negativosAbajoPositivosArriba2(Deque<Integer> pila) {
-		Queue<Integer> colaPos = new LinkedList<>();
-		Queue<Integer> colaNeg = new LinkedList<>();
-		while (!pila.isEmpty()) {
-			int n = pila.pop();
-			if (n < 0)
-				colaNeg.offer(n);
+		int n = cola.size();
+		for (int i=0; i<n; i++) {
+			int numero = cola.poll();
+			if (numero >= 0)
+				cola.offer(numero);
 			else
-				colaPos.offer(n);
+				pila.push(numero);
 		}
-		while (!colaPos.isEmpty())
-			pila.push(colaPos.poll());
-		while (!colaNeg.isEmpty())
-			pila.push(colaNeg.poll());
+		while (!cola.isEmpty())
+			pila.push(cola.poll());
 
+	
 	}
+
+
 
 }
