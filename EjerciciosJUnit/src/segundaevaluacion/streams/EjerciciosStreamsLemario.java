@@ -3,6 +3,7 @@ package segundaevaluacion.streams;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -36,41 +37,45 @@ public class EjerciciosStreamsLemario {
 //		Map<String, List<String>> mapa2 = new TreeMap<>();
 //		mapa2 = lemario.stream().filter(s -> s.length() > 3).collect(Collectors.groupingBy((s) -> s.substring(0, 3)));
 //		mapa2.forEach((k, v) -> System.out.println(k + " (" + k.length() + "): " + v));
-		
+
 		// Ejercicio 3: encontrar los palindromos y almacenarlos en una lista.
 //		List<String> palindromos = lemario.stream().filter(s -> isPalindrome(s)).collect(Collectors.toList());
+//		List<String> palindromos2 = lemario.stream().filter(s -> isPalindrome(s)).toList();
 //		System.out.println(palindromos);
+//		System.out.println(palindromos2);
 //		
-		// Ejercicio 4: contar el numero de palabras en las que aparece cada letra de la 'a' a la 'z'
-		Map<String, List<String>> mapa3 = new TreeMap<>();
-		char [] cc = new char[1];
-		for(char c='a'; c<='z';c++) {
-			cc[0] = c;
-			System.out.println(c + ": " + lemario.stream().filter(s -> s.contains(String.valueOf(cc[0]))).count());
-		}
+		// Ejercicio 4: contar el numero de palabras en las que aparece cada letra de la
+		// 'a' a la 'z'
 		
-		lemario.stream().
-	}
-	public static boolean isPalindrome(String str)
-    {
-        // Initializing an empty string to store the reverse
-        // of the original str
-        String rev = "";
- 
-        // Initializing a new boolean variable for the
-        // answer
-        boolean ans = false;
- 
-        for (int i = str.length() - 1; i >= 0; i--) {
-            rev = rev + str.charAt(i);
-        }
- 
-        // Checking if both the strings are equal
-        if (str.equals(rev)) {
-            ans = true;
-        }
-        return ans;
-    }
+//		char[] cc = new char[1];
+//		for (char c = 'a'; c <= 'z'; c++) {
+//			cc[0] = c;
+//			System.out.println(c + ": " + lemario.stream().filter(s -> s.contains(String.valueOf(cc[0]))).count());
+//		}
+		
+//		Map<Integer, Integer> map = new TreeMap<>();
+//		lemario.stream().flatMap(p -> p.chars().boxed()).forEach(c -> map.merge(c, 1, (a, b) -> a +b));
+//		map.forEach((k, v) -> System.out.printf("%c: %d\n", k, v));
+		
 
+		lemario.stream().flatMap(p -> p.chars().boxed())
+		.collect(Collectors.groupingBy(c -> c, TreeMap::new, Collectors.counting()))
+		.forEach((k, v) -> System.out.printf("%c: %d\n", k, v));;
+
+
+	}
+
+	
+
+	public static boolean isPalindrome(String str) {
+
+		String s = "";
+		boolean palindrome = false;
+		for (int i = str.length() - 1; i >= 0; i--) 
+			s = s + str.charAt(i);
+		if (str.equals(s)) 
+			palindrome = true;
+		return palindrome;
+	}
 
 }
