@@ -1,50 +1,54 @@
 package primeraevaluacion.colecciones;
 
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Palabras {
+    private Set<String> palabrasUnicas;
+    private Map<Integer, Set<String>> palabrasPorLongitud;
 
-	Set<String> palabras;
+    public Palabras() {
+        palabrasUnicas = new HashSet<>();
+        palabrasPorLongitud = new HashMap<>();
+    }
 
-	public Palabras() {
-		this.palabras = new TreeSet<>();
-	}
-	
-	public Palabras(String cadena) {
-		this.palabras = new TreeSet<>();
-		String[] palabrasParametro = cadena.split(" ");
-		for(String p: palabrasParametro)
-			palabras.add(p);
-	}
-	
-	public boolean añadirPalabra(String palabra) {
-		return palabras.add(palabra);
-	}
-	
-	public void añadirCadena(String cadena) {
-		String[] palabrasParametro = cadena.split(" ");
-		for(String p: palabrasParametro)
-			palabras.add(p);
-	}
-	
-	public boolean isContenida(String palabra) {
-		return palabras.contains(palabra);
-	}
-	
-	public Set<String> palabrasConLongitudN(int longitud){
-		Set<String> aux = new TreeSet<>();
-		aux.addAll(palabras);
-		aux.removeIf(n -> (n.length())==longitud);
-		return aux;
-	}
-	
-	public void borrarPalabras() {
-		palabras.removeAll(palabras);
-	}
-	
-	public void reemplazarPalabras(String cadena) {
-		borrarPalabras();
-		añadirCadena(cadena);
-	}
+    public Palabras(String cadena) {
+        palabrasUnicas = new HashSet<>();
+        palabrasPorLongitud = new HashMap<>();
+        agregarPalabras(cadena);
+    }
+
+    public void agregarPalabra(String palabra) {
+        if (!palabrasUnicas.contains(palabra)) {
+            palabrasUnicas.add(palabra);
+            int longitud = palabra.length();
+            Set<String> palabrasDeLongitud = palabrasPorLongitud.getOrDefault(longitud, new TreeSet<>());
+            palabrasDeLongitud.add(palabra);
+            palabrasPorLongitud.put(longitud, palabrasDeLongitud);
+        }
+    }
+
+    public void agregarPalabras(String cadena) {
+        String[] palabras = cadena.split("\\s+");
+        for (String palabra : palabras) {
+            agregarPalabra(palabra);
+        }
+    }
+
+    public boolean contienePalabra(String palabra) {
+        return palabrasUnicas.contains(palabra);
+    }
+
+    public Set<String> obtenerPalabrasDeLongitud(int longitud) {
+        return palabrasPorLongitud.getOrDefault(longitud, new TreeSet<>());
+    }
+
+    public void borrarPalabras() {
+        palabrasUnicas.clear();
+        palabrasPorLongitud.clear();
+    }
+
+    public void borrarPalabras(String cadena) {
+        borrarPalabras();
+        agregarPalabras(cadena);
+    }
 }
