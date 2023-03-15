@@ -1,4 +1,4 @@
-package primeraevaluacion.colecciones;
+package segundaevaluacion.entregable1;
 
 import java.util.*;
 
