@@ -5,11 +5,11 @@ import java.util.*;
 public class Ejercicio4 {
 	public static void main(String[] args) {
 		Palabras palabras = new Palabras();
-		Scanner scanner = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 
 		while (true) {
 			System.out.println("Ingrese un comando: ");
-			String comando = scanner.nextLine();
+			String comando = sc.nextLine();
 
 			if (comando.startsWith("añadir: ")) {
 				String cadena = comando.substring(8);
@@ -30,5 +30,6 @@ public class Ejercicio4 {
 				System.out.println("Comando no válido.");
 			}
 		}
+		sc.close();
 	}
 }

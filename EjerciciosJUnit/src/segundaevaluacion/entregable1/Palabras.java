@@ -1,6 +1,10 @@
 package segundaevaluacion.entregable1;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Palabras {
     private Set<String> palabrasUnicas;
@@ -51,4 +55,6 @@ public class Palabras {
         borrarPalabras();
         agregarPalabras(cadena);
     }
+    
+    
 }
