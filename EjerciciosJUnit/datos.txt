@@ -1,0 +1,8 @@
+C:\Users\TardeDAM\git\DAMJUnit5\EjerciciosJUnit\recursos\quijote-es.txt
+Numero de caracteres: 2031633
+Numero de palabras: 379873
+Numero de lineas: 31119
+C:\Users\TardeDAM\git\DAMJUnit5\EjerciciosJUnit\src\terceraevaluacion\ficheros\Ejercicio4.java
+Numero de caracteres: 1258
+Numero de palabras: 171
+Numero de lineas: 55

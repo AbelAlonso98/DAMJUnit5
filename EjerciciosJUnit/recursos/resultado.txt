@@ -1,0 +1,5 @@
+Resultado:
+Ruta: C:\Users\TardeDAM\git\DAMJUnit5\EjerciciosJUnit\recursos\quijote-es.txt
+Numero caracteres: 2031633
+Numero palabras: 379873
+Numero lineas: 31119

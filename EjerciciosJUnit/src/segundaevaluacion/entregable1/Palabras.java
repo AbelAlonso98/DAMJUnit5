@@ -1,9 +1,9 @@
 package segundaevaluacion.entregable1;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 public class Palabras {
@@ -12,12 +12,12 @@ public class Palabras {
 
     public Palabras() {
         palabrasUnicas = new HashSet<>();
-        palabrasPorLongitud = new HashMap<>();
+        palabrasPorLongitud = new TreeMap<>();
     }
 
     public Palabras(String cadena) {
         palabrasUnicas = new HashSet<>();
-        palabrasPorLongitud = new HashMap<>();
+        palabrasPorLongitud = new TreeMap<>();
         agregarPalabras(cadena);
     }
 
@@ -54,6 +54,10 @@ public class Palabras {
     public void borrarPalabras(String cadena) {
         borrarPalabras();
         agregarPalabras(cadena);
+    }
+    
+    public void mostrarPalabras() {
+    	palabrasUnicas.stream().sorted().forEach(s -> System.out.println(s));
     }
     
     
